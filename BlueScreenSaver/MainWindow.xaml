@@ -4,9 +4,37 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BlueScreenSaver"
-        mc:Ignorable="d"
+        mc:Ignorable="d" WindowStyle="None"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+    <Viewbox Margin="30">
+  <Grid HorizontalAlignment="Left" Width="500">
+      <Grid.RowDefinitions>
+        <RowDefinition Height="*"></RowDefinition>
+        <RowDefinition Height="Auto"></RowDefinition>
+        <RowDefinition Height="Auto"></RowDefinition>
+        <RowDefinition Height="Auto"></RowDefinition>
+        <RowDefinition Height="Auto"></RowDefinition>
+        <RowDefinition Height="*"></RowDefinition>
+      </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+    <Label Grid.Row="0" Grid.Column="0" FontSize="144">:(</Label>
+            <TextBlock Grid.Row="1" Grid.Column="0">
+                <Run>Your PC ran into a problem and needs to restart. We're</Run>
+                <LineBreak></LineBreak>
+                <Run>just collecting some error info, and then we'll restart for</Run>
+                <LineBreak></LineBreak>
+                <Run>you.</Run>
+            </TextBlock>
+            <Label Grid.Row="2" Grid.Column="0">25% complete</Label>
+            <Grid Grid.Row="3" Grid.Column="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+            </Grid>
+        </Grid>
+    </Viewbox>
 </Window>
