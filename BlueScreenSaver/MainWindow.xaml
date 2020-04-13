@@ -1,39 +1,111 @@
-﻿<Window x:Class="BlueScreenSaver.MainWindow"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:BlueScreenSaver"
-        mc:Ignorable="d" WindowStyle="None"
-        Title="MainWindow" Height="450" Width="800">
+﻿<Window
+    x:Class="BlueScreenSaver.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:BlueScreenSaver"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="BlueScreenSaver"
+    Width="800"
+    Height="450"
+    Background="#009CF1"
+    KeyDown="Window_KeyDown"
+    Loaded="Window_Loaded"
+    MouseDown="Window_MouseDown"
+    MouseMove="Window_MouseMove"
+    ResizeMode="NoResize"
+    WindowStyle="None"
+    mc:Ignorable="d">
+    <Window.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Label">
+                <Setter Property="Foreground" Value="White" />
+            </Style>
+            <Style TargetType="TextBox">
+                <Setter Property="Foreground" Value="White" />
+            </Style>
+            <Style TargetType="TextBlock">
+                <Setter Property="Foreground" Value="White" />
+            </Style>
+            <local:IntoToStringConverter x:Key="int2stringconverter" />
+        </ResourceDictionary>
+    </Window.Resources>
     <Viewbox Margin="30">
-  <Grid HorizontalAlignment="Left" Width="500">
-      <Grid.RowDefinitions>
-        <RowDefinition Height="*"></RowDefinition>
-        <RowDefinition Height="Auto"></RowDefinition>
-        <RowDefinition Height="Auto"></RowDefinition>
-        <RowDefinition Height="Auto"></RowDefinition>
-        <RowDefinition Height="Auto"></RowDefinition>
-        <RowDefinition Height="*"></RowDefinition>
-      </Grid.RowDefinitions>
+        <Grid HorizontalAlignment="Left">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"></ColumnDefinition>
-                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-    <Label Grid.Row="0" Grid.Column="0" FontSize="144">:(</Label>
-            <TextBlock Grid.Row="1" Grid.Column="0">
+            <Label
+                Grid.Row="0"
+                Grid.Column="0"
+                FontSize="144">
+                :(
+            </Label>
+            <TextBlock
+                Grid.Row="1"
+                Grid.Column="0"
+                FontSize="32">
                 <Run>Your PC ran into a problem and needs to restart. We're</Run>
-                <LineBreak></LineBreak>
+                <LineBreak />
                 <Run>just collecting some error info, and then we'll restart for</Run>
-                <LineBreak></LineBreak>
+                <LineBreak />
                 <Run>you.</Run>
             </TextBlock>
-            <Label Grid.Row="2" Grid.Column="0">25% complete</Label>
+            <TextBlock
+                Grid.Row="2"
+                Grid.Column="0"
+                FontSize="32">
+                <Run Text="{Binding Completeness, Converter={StaticResource int2stringconverter}}" /><Run>%</Run> <Run>complete</Run>
+            </TextBlock>
             <Grid Grid.Row="3" Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto"></ColumnDefinition>
-                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
+                <Grid
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    Margin="3,3,12,3"
+                    Background="White">
+                    <Image
+                        Width="64"
+                        Height="64"
+                        Margin="3"
+                        VerticalAlignment="Top"
+                        Source="pack://application:,,,/images/qr-code.png" />
+                </Grid>
+                <TextBlock
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    FontSize="16">
+                    <Run>For more information about this issue and possible fixes, visit</Run>
+                    <LineBreak />
+                    <Run>https://www.windows.com/stopcode</Run>
+                    <LineBreak />
+                </TextBlock>
+                <TextBlock
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    FontSize="12">
+                    <Run>If you call a support person, give them this info:</Run>
+                    <LineBreak />
+                    <Run>just collecting some error info, and then we'll restart for</Run>
+                    <LineBreak />
+                    <Run>you.</Run>
+                </TextBlock>
             </Grid>
         </Grid>
     </Viewbox>
